@@ -16,21 +16,30 @@
         align-content: center;
       "
     >
-      <div id="table" style="width: 1000px; height: 521px">
-        <div
-          style="
-            width: 100px;
-            height: 60px;
-            background-color: aliceblue;
-            position: relative;
-            left: 128px;
-            top: 146px;
-            display: block;
-          "
-        >
-          <h4>CAL2</h4>
-        </div>
+      <div
+        style="
+          width: 100px;
+          height: 60px;
+          background-color: aliceblue;
+          position: absolute;
+          left: 328px;
+          top: 165.5px;
+          display: block;
+          cursor: pointer;
+          background-image: linear-gradient(
+            to right,
+            #f6d365 0%,
+            #fda085 51%,
+            #f6d365 100%
+          );
 
+          background-size: 200% auto;
+        "
+        onclick="location.href='${allDatas[i].link}'"
+      >
+        <h4>${allDatas[i].name}</h4>
+      </div>
+      <div id="table" style="width: 1000px; height: 521px; position: relative">
         <svg width="1000" height="521" viewBox="0 0 1000 521" fill="none">
           <path
             d="M0 100C0 44.7715 44.7715 0 100 0H980C991.046 0 1000 8.95431 1000 20V501C1000 512.046 991.046 521 980 521H20C8.9543 521 0 512.046 0 501V100Z"
@@ -189,5 +198,54 @@
         </svg>
       </div>
     </div>
+    <script>
+      var allDatas = [
+        {
+          name: "cal1",
+          day: 1,
+          timeStart: 8,
+          timeEnd: 9,
+          link: "https://songholder.co/"
+        },
+        {
+          name: "cal2",
+          day: 2,
+          timeStart: 10,
+          timeEnd: 15,
+          link: "https://songholder.co/discover"
+        },
+        {
+          name: "cal3",
+          day: 5,
+          timeStart: 8,
+          timeEnd: 9,
+          link: "https://songholder.co/discover"
+        }
+      ];
+      let tableHtml = document.getElementById("table").innerHTML;
+      for (let i = 0; i < allDatas.length; i++) {
+        tableHtml =
+          `<div
+                style="
+                width: ${100 * (allDatas[i].timeEnd - allDatas[i].timeStart)}px;
+                height: 60px;
+                background-color: aliceblue;
+                position: absolute;
+                left: ${128 + 100 * (allDatas[i].timeStart - 8)}px;
+                top: ${85.5 + (allDatas[i].day - 1) * 80}px;
+                display: block;
+                cursor: pointer;
+                background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+                
+                background-size: 200% auto;
+                "
+                onclick="location.href='${allDatas[i].link}'"
+                onMouseOver="this.style.background-position='right center'"
+          >
+                <h4>${allDatas[i].name}</h4>
+          </div>` + tableHtml;
+        document.getElementById("table").innerHTML = tableHtml;
+      }
+    </script>
   </body>
 </html>
