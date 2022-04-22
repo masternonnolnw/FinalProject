@@ -59,19 +59,78 @@
       <div id="table" style="width: 1000px; height: 521px; position: relative">
         <img id="tableSVG" src="table.svg" alt="table" />
       </div>
+    </div> 
+
+    <!------------------------------------------------- Addcontent -->
+
+    <div>
+      <div id="addContentDiv">
+        <input type="text" id="addContentSubject">
+
+        <!-- <input list="dateList" id="addContentDate"> -->
+        <select id="addContentDate">
+          <optgroup id="dateOption">
+          <option value="Monday">จันทร์</option>
+          <option value="Tuesday">อังคาร</option>
+          <option value="Wednesday">พุธ</option>
+          <option value="Thursday">พฤหัสบดี</option>
+          <option value="Friday">ศุกร์</option>
+          <option value="Saturday">เสาร์</option>
+          <option value="Sunday">อาทิตย์</option>
+          </optgroup>
+        </select>
+
+        <select id="addContentTimeStart">
+          <optgroup id="timeOption">
+            <option value="1">8:00</option>
+            <option value="1.5">8:30</option>
+            <option value="2">9:00</option>
+            <option value="2.5">9:30</option>
+            <option value="3">10:00</option>
+            <option value="3.5">10:30</option>
+            <option value="4">11:00</option>
+            <option value="4.5">11:30</option>
+            <option value="5">12:00</option>
+            <option value="5.5">12:30</option>
+            <option value="6">13:00</option>
+            <option value="6.5">13:30</option>
+            <option value="7">14:00</option>
+            <option value="7.5">14:30</option>
+            <option value="8">15:00</option>
+            <option value="8.5">15:30</option>
+          </optgroup>
+        </select>
+
+        <select id="addContentTimeEnd">
+          <optgroup id="timeOption">
+            <option value="1.5">8:30</option>
+            <option value="2">9:00</option>
+            <option value="2.5">9:30</option>
+            <option value="3">10:00</option>
+            <option value="3.5">10:30</option>
+            <option value="4">11:00</option>
+            <option value="4.5">11:30</option>
+            <option value="5">12:00</option>
+            <option value="5.5">12:30</option>
+            <option value="6">13:00</option>
+            <option value="6.5">13:30</option>
+            <option value="7">14:00</option>
+            <option value="7.5">14:30</option>
+            <option value="8">15:00</option>
+            <option value="8.5">15:30</option>
+            <option value="9">16:00</option>
+          </optgroup>
+        </select>
+
+        <input type="text" id="addContentLink">
+
+        <button id="confirmButton"></button>
+        <button id="cancelButton"></button>
+      </div>
     </div>
-    <div
-      id="addContentDiv"
-      style="
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-content: center;
-      "
-    >
-      <img id="addContentSVG" src="addContent.svg" alt="addContent" />
-    </div>
+    <!-- end of addcontent -->
+
+
     <script>
       var allDatas = [
         {

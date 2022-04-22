@@ -1,8 +1,89 @@
-#addContentDiv {
-    margin-top: 100px;
-    background-color: yellowgreen;
-}
+/* @import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Kanit:wght@100;200;300;400;500;600&family=Mitr:wght@200;300;400;500;600;700&family=NTR&family=Sora:wght@100;200;300;400;500;600;700;800&display=swap"); */
 
 #addContentSVG {
-    margin: 50px auto 50px auto;
+  position:absolute;
+  /* margin: auto auto 50px auto; */
+}
+
+#addContentDiv {
+  width:593px;
+  height:365px;
+  background-repeat: no-repeat;
+  background-image: url(addContent.svg);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  /* background-color: green; */
+  margin: 100px auto;
+  position: relative;
+}
+
+#addContentSubject, #addContentDate, #addContentTimeStart, #addContentTimeEnd, #addContentLink {
+  position: absolute;
+  background-color: #C4C4C4;
+  padding: 0;
+  padding-left: 10px;
+  border: 0;
+}
+
+#addContentSubject {
+  width: 195px;
+  height: 31px;
+  left: 67px;
+  top: 102px;
+}
+
+#addContentDate {
+  width: 160px;
+  height: 30px;
+  left: 67px;
+  top: 175px;
+}
+
+#addContentTimeStart {
+  width: 100px;
+  height: 30px;
+  left: 283px;
+  top: 175px;
+}
+
+#addContentTimeEnd {
+  width: 100px;
+  height: 30px;
+  left: 456px;
+  top: 175px;
+}
+
+#addContentLink {
+  width: 491px;
+  height: 40px;
+  left: 67px;
+  top: 249px;
+}
+
+select, option {
+  font-family: "Sora";
+}
+
+#confirmButton {
+  position: absolute;
+  width: 71.4px;
+  height: 38px;
+  opacity: 0;
+  border-radius: 10px;
+  left: 409px;
+  top: 312px;
+  cursor: pointer;
+
+}
+
+#cancelButton {
+  position: absolute;
+  width: 71.4px;
+  height: 38px;
+  opacity: 0;
+  border-radius: 10px;
+  left: 488px;
+  top: 312px;
+  cursor: pointer;
 }
