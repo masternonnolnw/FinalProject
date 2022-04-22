@@ -13,6 +13,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"></script>
   </head>
   <body style="background-color: #082032">
     <style>
@@ -70,13 +71,11 @@
         <!-- <input list="dateList" id="addContentDate"> -->
         <select id="addContentDate">
           <optgroup id="dateOption">
-          <option value="Monday">จันทร์</option>
-          <option value="Tuesday">อังคาร</option>
-          <option value="Wednesday">พุธ</option>
-          <option value="Thursday">พฤหัสบดี</option>
-          <option value="Friday">ศุกร์</option>
-          <option value="Saturday">เสาร์</option>
-          <option value="Sunday">อาทิตย์</option>
+          <option value="1">จันทร์</option>
+          <option value="2">อังคาร</option>
+          <option value="3">พุธ</option>
+          <option value="4">พฤหัสบดี</option>
+          <option value="5">ศุกร์</option>
           </optgroup>
         </select>
 
@@ -124,7 +123,7 @@
 
         <input type="text" id="addContentLink">
 
-        <button id="confirmButton"></button>
+        <button id="confirmButton" onclick="addNewContent()"></button>
         <button id="cancelButton"></button>
       </div>
     </div>
