@@ -14,13 +14,189 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js"></script>
+
+    <script type="module" src="databaseConnect.js"></script>
+    <!-- <script src="databaseConnect.js" type="module"></script> -->
   </head>
   <body style="background-color: #082032">
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        width: 1500px;
+        height: 50px;
+        position: relative;
+        margin-top: 20px;
+      }
+      .block {
+        background-color: #f85f73;
+        display: flex;
+        padding: 0px;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        transition: 0.3s;
+      }
+      .list {
+        position: absolute;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: 0.3s;
+        width: 100%;
+        height: 100%;
+      }
+      .newlist {
+        transform: scaleY(1);
+      }
+      .left-block {
+        width: 95%;
+        height: 100%;
+        background-color: #334756;
+        padding: 10px 50px;
+      }
+      .click {
+        background-color: #454545;
+        width: 5%;
+        border: none;
+        outline: none;
+        padding: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .arrow-down {
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 13px solid #c4c4c4;
+      }
+      .lb-con {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        text-align: center;
+      }
+      .sj {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        height: 100%;
+        background-color: #5f6d77;
+        color: #ffffff;
+      }
+      .cd {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        height: 100%;
+        background-color: #989ea3;
+        color: #334756;
+      }
+      .zoom {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
+        height: 100%;
+        background-color: #e5e5e5;
+        color: #334756;
+      }
+      .head {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 1325px;
+        height: 50%;
+        text-align: center;
+        margin-left: 50px;
+      }
+      .hsj {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        height: 100%;
+        color: #000000;
+      }
+      .hcd {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        height: 100%;
+        color: #000000;
+      }
+      .hzoom {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
+        height: 100%;
+        color: #000000;
+      }
+      a {
+        text-decoration: none;
+        color: #334756;
+      }</style
+    ><style>
       .box:hover {
         background-position: right center;
       }
     </style>
+    <div class="container">
+      <div class="head">
+        <div class="hsj" style="color: #ffffff">Subject</div>
+        <div class="hcd" style="color: #ffffff">Countdown</div>
+        <div class="hzoom" style="color: #ffffff">Link Zoom</div>
+      </div>
+      <div class="block">
+        <div class="left-block">
+          <div class="lb-con">
+            <div class="sj" id="showSubject">Code 1</div>
+            <div class="cd" id="showCd">00:00:00</div>
+            <div class="zoom" id="showLink">
+              <a
+                target="_blank"
+                href="https://chula.zoom.us/j/8454922639?pwd=M2RoNUllSXVpVHMwSG50ZmtRb2M5UT09"
+                >https://chula.zoom.us/j/8454922639?pwd=M2RoNUllSXVpVHMwSG50ZmtRb2M5UT09</a
+              >
+            </div>
+          </div>
+        </div>
+        <button class="click" style="cursor: pointer">
+          <div class="arrow-down" />
+        </button>
+      </div>
+      <div class="list">
+        <div class="left-block">
+          <div class="lb-con">
+            <div class="sj">Code 2</div>
+            <div class="cd">00:10:00</div>
+            <div class="zoom">
+              <a
+                target="_blank"
+                href="https://chula.zoom.us/j/8454922639?pwd=M2RoNUllSXVpVHMwSG50ZmtRb2M5UT09"
+                >https://chula.zoom.us/j/8454922639?pwd=M2RoNUllSXVpVHMwSG50ZmtRb2M5UT09</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let click = document.querySelector(".click");
+      let list = document.querySelector(".list");
+      click.addEventListener("click", () => {
+        list.classList.toggle("newlist");
+      });
+    </script>
     <div
       style="
         width: 100%;
@@ -60,22 +236,22 @@
       <div id="table" style="width: 1000px; height: 521px; position: relative">
         <img id="tableSVG" src="table.svg" alt="table" />
       </div>
-    </div> 
+    </div>
 
     <!------------------------------------------------- Addcontent -->
 
     <div>
       <div id="addContentDiv">
-        <input type="text" id="addContentSubject">
+        <input type="text" id="addContentSubject" />
 
         <!-- <input list="dateList" id="addContentDate"> -->
         <select id="addContentDate">
           <optgroup id="dateOption">
-          <option value="1">จันทร์</option>
-          <option value="2">อังคาร</option>
-          <option value="3">พุธ</option>
-          <option value="4">พฤหัสบดี</option>
-          <option value="5">ศุกร์</option>
+            <option value="1">จันทร์</option>
+            <option value="2">อังคาร</option>
+            <option value="3">พุธ</option>
+            <option value="4">พฤหัสบดี</option>
+            <option value="5">ศุกร์</option>
           </optgroup>
         </select>
 
@@ -121,118 +297,14 @@
           </optgroup>
         </select>
 
-        <input type="text" id="addContentLink">
+        <input type="text" id="addContentLink" />
 
         <button id="confirmButton" onclick="addNewContent()"></button>
         <button id="cancelButton"></button>
       </div>
     </div>
-    <!-- end of addcontent -->
 
-
-    <script>
-      var allDatas = [
-        {
-          name: "calculus",
-          day: 1,
-          timeStart: 8,
-          timeEnd: 11,
-          link: "https://songholder.co/",
-          color: "#9ADCFF"
-        },
-        {
-          name: "physic",
-          day: 1,
-          timeStart: 13,
-          timeEnd: 16,
-          link: "https://songholder.co/",
-          color: "#FFF89A"
-        },
-        {
-          name: "Eng",
-          day: 2,
-          timeStart: 8,
-          timeEnd: 11,
-          link: "https://songholder.co/",
-          color: "#FFB2A6"
-        },
-        {
-          name: "Com",
-          day: 3,
-          timeStart: 8,
-          timeEnd: 9,
-          link: "https://songholder.co/",
-          color: "#FF8AAE"
-        },
-        {
-          name: "Drawing",
-          day: 3,
-          timeStart: 9,
-          timeEnd: 11,
-          link: "https://songholder.co/",
-          color: "#AD8B73"
-        },
-        {
-          name: "Algoritm",
-          day: 4,
-          timeStart: 9,
-          timeEnd: 11,
-          link: "https://songholder.co/",
-          color: "#B4CFB0"
-        },
-        {
-          name: "Data",
-          day: 4,
-          timeStart: 13,
-          timeEnd: 16,
-          link: "https://songholder.co/",
-          color: "#E3CAA5"
-        },
-        {
-          name: "Math",
-          day: 5,
-          timeStart: 9,
-          timeEnd: 11,
-          link: "https://songholder.co/",
-          color: "#FFBCD1"
-        }
-      ];
-      let tableHtml = document.getElementById("table").innerHTML;
-      for (let i = 0; i < allDatas.length; i++) {
-        tableHtml =
-          `<div
-                class="box"
-                style="
-                width: ${100 * (allDatas[i].timeEnd - allDatas[i].timeStart)}px;
-                height: 60px;
-                background-color: aliceblue;
-                position: absolute;
-                left: ${128 + 100 * (allDatas[i].timeStart - 8)}px;
-                top: ${85.5 + (allDatas[i].day - 1) * 80}px;
-                display: flex;
-                align-content: center;
-                justify-content: center;
-                cursor: pointer;
-                background-color:${
-                  allDatas[i].color.length > 1 ? allDatas[i].color : "#9ADCFF"
-                };
-
-
-                background-size: 200% auto;
-                z-index: 2;
-                transition: 0.3s;
-                "
-                onclick="location.href='${allDatas[i].link}'"
-                onMouseOver="this.style.background-position='right center'"
-          >
-                <h4 style="color: blak;
-                    font-family: 'Sora';
-                    font-style: normal;
-                    font-weight: 400;"
-                >${allDatas[i].name}</h4>
-          </div>` + tableHtml;
-        document.getElementById("table").innerHTML = tableHtml;
-      }
-    </script>
+    <button onclick="deleteData()">Delete All</button>
+    <script></script>
   </body>
 </html>

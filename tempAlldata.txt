@@ -1,0 +1,66 @@
+var allDatas = [
+    {
+      name: "calculus",
+      day: 1,
+      timeStart: 8,
+      timeEnd: 11,
+      link: "https://songholder.co/",
+      color: "#9ADCFF"
+    },
+    {
+      name: "physic",
+      day: 1,
+      timeStart: 13,
+      timeEnd: 16,
+      link: "https://songholder.co/",
+      color: "#FFF89A"
+    },
+    {
+      name: "Eng",
+      day: 2,
+      timeStart: 8,
+      timeEnd: 11,
+      link: "https://songholder.co/",
+      color: "#FFB2A6"
+    },
+    {
+      name: "Com",
+      day: 3,
+      timeStart: 8,
+      timeEnd: 9,
+      link: "https://songholder.co/",
+      color: "#FF8AAE"
+    },
+    {
+      name: "Drawing",
+      day: 3,
+      timeStart: 9,
+      timeEnd: 11,
+      link: "https://songholder.co/",
+      color: "#AD8B73"
+    },
+    {
+      name: "Algoritm",
+      day: 4,
+      timeStart: 9,
+      timeEnd: 11,
+      link: "https://songholder.co/",
+      color: "#B4CFB0"
+    },
+    {
+      name: "Data",
+      day: 4,
+      timeStart: 13,
+      timeEnd: 16,
+      link: "https://songholder.co/",
+      color: "#E3CAA5"
+    },
+    {
+      name: "Math",
+      day: 5,
+      timeStart: 9,
+      timeEnd: 11,
+      link: "https://songholder.co/",
+      color: "#FFBCD1"
+    }
+  ];
