@@ -230,12 +230,14 @@ async function deleteData() {
   }
   console.log("delete");
 }
-var t = setInterval(setRecomendedLink, 1000);
+var updateCooldown = setInterval(setRecomendedLink, 1000);
 function setRecomendedLink() {
   var inx = 0;
   var mn = 100000000000;
   var ans = -1;
+  var ch = 0;
   for (let i = 0; i < tempData.length; i++) {
+    ch = 0;
     inx = i;
     const d = new Date();
     let day = d.getDay();
@@ -251,10 +253,17 @@ function setRecomendedLink() {
     var time = Number(tempData[inx].timeStart) * 60 * 60;
     time -= hours * 60 * 60 + minutes * 60 + seconds;
     if (time < 0) {
+      ch = 1;
       time = Number(tempData[inx].timeEnd) * 60 * 60;
       time -= hours * 60 * 60 + minutes * 60 + seconds;
     }
-    if (time > 0 && time < mn) {
+    console.log("time");
+    console.log(time);
+    console.log(ch);
+    if (time > 0 && time == mn && ch == 1) {
+      mn = time;
+      ans = i;
+    } else if (time > 0 && time < mn) {
       mn = time;
       ans = i;
     }
