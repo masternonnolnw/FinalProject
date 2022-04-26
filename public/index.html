@@ -29,22 +29,20 @@
       align-content: center;
     "
   >
-    <script>
-      document.getElementById("controlScale").style.transform = "scale(0.28)";
-      if (window.innerWidth < 500) {
-        document.getElementById("controlScale").style.transform = "scale(0.28)";
-      }
-    </script>
-
     <style>
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
       .container {
-        /* width: 1000px; */
-        height: 50px;
+        width: 80vw;
+        height: 70px;
         position: relative;
         margin-top: 20px;
       }
@@ -102,7 +100,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 20%;
+        width: 30%;
         height: 100%;
         background-color: #5f6d77;
         color: #ffffff;
@@ -111,7 +109,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 20%;
+        width: 30%;
         height: 100%;
         background-color: #989ea3;
         color: #334756;
@@ -120,7 +118,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 60%;
+        width: 40%;
         height: 100%;
         background-color: #e5e5e5;
         color: #334756;
@@ -129,38 +127,38 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 1325px;
+        width: 80vw;
         height: 50%;
         text-align: center;
-        margin-left: 50px;
+        /* margin-left: 50px; */
       }
       .hsj {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 20%;
+        width: 30%;
         height: 100%;
         color: #000000;
-        margin-left: -390px;
-        margin-right: 100px;
+        /* margin-left: -390px; */
+        /* margin-right: 100px; */
       }
       .hcd {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 20%;
+        width: 30%;
         height: 100%;
         color: #000000;
-        margin-left: -190px;
+        /* margin-left: -190px; */
       }
       .hzoom {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 60%;
+        width: 40%;
         height: 100%;
         color: #000000;
-        margin-left: -190px;
+        /* margin-left: -190px; */
       }
       a {
         text-decoration: none;
@@ -180,7 +178,7 @@
         justify-content: center;
         align-content: center;
         flex-direction: column;
-        /* transform: scale(0.28); */
+        transform: scale(1);
         /* background-color: #ff0000; */
       "
     >
@@ -266,12 +264,14 @@
         </h1>
       </div>
       <div
+        id="tableScale"
         style="
           width: 100%;
           height: 100%;
           display: flex;
           justify-content: center;
           align-content: center;
+          /* transform: scale(0.5); */
           /* transform: scale(0.5); */
         "
       >
@@ -379,5 +379,23 @@
         "
       ></table>
     </div>
+    <script>
+      document.getElementById("tableScale").style.transform =
+        "scale(" + window.innerWidth / 1050 + ")";
+      document.getElementById("tableScale").style.marginTop =
+        String(window.innerWidth / 3.5 - 250) + "px";
+      document.getElementById("addContentDiv").style.transform =
+        "scale(" + window.innerWidth / 1050 + ")";
+      document.getElementById("addContentDiv").style.marginTop =
+        String(window.innerWidth / 2.5 - 300) + "px";
+      document.getElementById("tableDelete").style.transform =
+        "scale(" + window.innerWidth / 1050 + ")";
+      document.getElementById("tableDelete").style.marginTop =
+        String(window.innerWidth / 4.5 - 300) + "px";
+      // if (window.innerWidth < 800) {
+      //   console.log("mobile");
+      //   document.getElementById("controlScale").style.transform = "scale(0.28)";
+      // }
+    </script>
   </body>
 </html>

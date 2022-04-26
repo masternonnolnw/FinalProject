@@ -266,7 +266,7 @@ function setRecomendedLink() {
   inx = ans;
   if (inx == -1) {
     document.getElementById("showCd").innerHTML = "00:00:00";
-    document.getElementById("showSubject").innerHTML = "No class more todays";
+    document.getElementById("showSubject").innerHTML = "No class";
     document.getElementById("showLink").innerHTML = `<a
     target="_blank"
     >...</a
@@ -299,7 +299,7 @@ function setRecomendedLink() {
     document.getElementById("showLink").innerHTML = `<a
     target="_blank"
     href="${tempData[inx].link}"
-    >${tempData[inx].link}</a
+    >Go to Link</a
   >`;
     return;
   } else {
