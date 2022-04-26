@@ -27,7 +27,7 @@ var tempData;
 setTable();
 async function setTable() {
   var items = await getDocs(itemsRef);
-  console.log(items);
+  // console.log(items);
   const datas = items.docs.map((item) => ({
     docId: item.id,
     ...item.data()
@@ -35,9 +35,17 @@ async function setTable() {
   var allDatas = datas;
   tempData = datas;
   console.log(allDatas);
-  let tableHtml = document.getElementById("table").innerHTML;
+  let tableHtml = `<img id="tableSVG" src="table.svg" alt="table" />`;
+  let tableDelte = document.getElementById("tableDelete").innerHTML;
+  tableDelte = `<tr>
+          <th>Subject</th>
+          <th>Days</th>
+          <th>TimeStart</th>
+          <th>TimeEnd</th>
+          <th>Delete</th>
+        </tr>`;
   for (let i = 0; i < allDatas.length; i++) {
-    console.log(allDatas[i]);
+    // console.log(allDatas[i]);
     tableHtml =
       `<div
                   id="${allDatas[i].name}"
@@ -74,7 +82,36 @@ async function setTable() {
                   >${allDatas[i].name}</h4>
             </div>` + tableHtml;
     document.getElementById("table").innerHTML = tableHtml;
+    var days = "";
+    if (allDatas[i].day == 1) days = "Mon";
+    if (allDatas[i].day == 2) days = "Tue";
+    if (allDatas[i].day == 3) days = "Wed";
+    if (allDatas[i].day == 4) days = "Thu";
+    if (allDatas[i].day == 5) days = "Fri";
+    console.log(allDatas[i]);
+    tableDelte += `
+        <tr>
+          <td height="50px">${allDatas[i].name}</td>
+          <td height="50px">${days}</td>
+          <td height="50px">${allDatas[i].timeStart}</td>
+          <td height="50px">${allDatas[i].timeEnd}</td>
+          <td height="50px">
+            <button onclick="deleteItem('${allDatas[i].docId}')" style="
+            font-family: 'Sora';
+            font-style: normal;
+            font-weight: 400;
+            color: white;
+            background-color: #f54e42;
+            padding:3px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            ">Delete</button>
+          </td>
+        </tr>`;
   }
+  document.getElementById("table").innerHTML = tableHtml;
+  document.getElementById("tableDelete").innerHTML = tableDelte;
 }
 async function showData() {
   const items = await getDocs(itemsRef);
@@ -106,42 +143,42 @@ async function addNewContent() {
   }
 
   let tableHtml = document.getElementById("table").innerHTML;
-  tableHtml =
-    `<div
-              class="box"
-              style="
-              width: ${100 * (timeEnd - timeStart)}px;
-              height: 60px;
-              background-color: aliceblue;
-              position: absolute;
-              left: ${128 + 100 * (timeStart - 1)}px;
-              top: ${85.5 + (day - 1) * 80}px;
-              display: flex;
-              align-content: center;
-              justify-content: center;
-              cursor: pointer;
-              background-color: "#9ADCFF";
-  
-  
-              background-size: 200% auto;
-              z-index: 2;
-              transition: 0.3s;
-  
-              onclick="location.href='${link}'"
-              onMouseOver="this.style.background-position='right center'"
-      >
-              <h4 style="color: blak;
-                  font-family: 'Sora';
-                  font-style: normal;
-                  font-weight: 400;"
-              >${subjectName}</h4>
-      </div>` + tableHtml;
-  document.getElementById("table").innerHTML = tableHtml;
+  var color = document.getElementById("colorPicker").value;
+  // tableHtml =
+  //   `<div
+  //             class="box"
+  //             style="
+  //             width: ${100 * (timeEnd - timeStart)}px;
+  //             height: 60px;
+  //             background-color: ${color};
+  //             position: absolute;
+  //             left: ${128 + 100 * (timeStart - 1)}px;
+  //             top: ${85.5 + (day - 1) * 80}px;
+  //             display: flex;
+  //             align-content: center;
+  //             justify-content: center;
+  //             cursor: pointer;
+
+  //             background-size: 200% auto;
+  //             z-index: 2;
+  //             transition: 0.3s;
+
+  //             onclick="location.href='${link}'"
+  //             onMouseOver="this.style.background-position='right center'"
+  //     >
+  //             <h4 style="color: blak;
+  //                 font-family: 'Sora';
+  //                 font-style: normal;
+  //                 font-weight: 400;"
+  //             >${subjectName}</h4>
+  //     </div>` + tableHtml;
+  // document.getElementById("table").innerHTML = tableHtml;
+
   var name = subjectName;
   var day = Number(day);
   timeStart = Number(timeStart) + 7;
   timeEnd = Number(timeEnd) + 7;
-  var color = "#9ADCFF";
+  // var color = "#9ADCFF";
 
   document.getElementById("addContentSubject").value = "";
   document.getElementById("addContentDate").value = 1;
@@ -156,8 +193,30 @@ async function addNewContent() {
     link,
     color
   });
-  console.log(res);
+  setTable();
+  // console.log(res);
+  // let tableDelte = document.getElementById("tableDelete").innerHTML;
+  // var days = "";
+  // if (day == 1) days = "Mon";
+  // if (day == 2) days = "Tue";
+  // if (day == 3) days = "Wed";
+  // if (day == 4) days = "Thu";
+  // if (day == 5) days = "Fri";
+  // tableDelte += `
+  //       <tr>
+  //         <td height="50px">${subjectName}</td>
+  //         <td height="50px">${days}</td>
+  //         <td height="50px">${Number(timeStart) + 7}</td>
+  //         <td height="50px">${Number(timeEnd) + 7}</td>
+  //         <td height="50px">
+  //           <button onclick="deleteItem('
+  //             ${res.docId}
+  //           }')">Delete</button>
+  //         </td>
+  //       </tr>`;
+  // document.getElementById("tableDelete").innerHTML = tableDelte;
 }
+
 async function deleteData() {
   const items = await getDocs(itemsRef);
   const datas = items.docs.map((item) => ({
@@ -180,9 +239,9 @@ function setRecomendedLink() {
     inx = i;
     const d = new Date();
     let day = d.getDay();
-    console.log("day");
-    console.log(day);
-    console.log(tempData[inx].day);
+    // console.log("day");
+    // console.log(day);
+    // console.log(tempData[inx].day);
     if (day != tempData[inx].day) {
       continue;
     }
@@ -191,14 +250,31 @@ function setRecomendedLink() {
     let seconds = d.getSeconds();
     var time = Number(tempData[inx].timeStart) * 60 * 60;
     time -= hours * 60 * 60 + minutes * 60 + seconds;
+    if (time < 0) {
+      time = Number(tempData[inx].timeEnd) * 60 * 60;
+      time -= hours * 60 * 60 + minutes * 60 + seconds;
+    }
     if (time > 0 && time < mn) {
+      mn = time;
       ans = i;
     }
+    // console.log("time");
+    // console.log(time);
+    // console.log(tempData[inx].name);
+    // console.log(ans);
   }
   inx = ans;
-  if (inx == -1) return;
-  console.log("inx");
-  console.log(inx);
+  if (inx == -1) {
+    document.getElementById("showCd").innerHTML = "00:00:00";
+    document.getElementById("showSubject").innerHTML = "No class more todays";
+    document.getElementById("showLink").innerHTML = `<a
+    target="_blank"
+    >...</a
+  >`;
+    if (inx == -1) return;
+  }
+  // console.log("inx");
+  // console.log(inx);
   document.getElementById("showSubject").innerHTML = tempData[inx].name;
   // console.log(tempData[inx].name);
   const d = new Date();
@@ -214,9 +290,23 @@ function setRecomendedLink() {
   // console.log("time1");
   // console.log(time);
   time -= hours * 60 * 60 + minutes * 60 + seconds;
-  hours = Math.floor(time / 3600);
-  minutes = Math.floor((time - hours * 60 * 60) / 60);
-  seconds = time % 60;
+  if (time < 0) {
+    hours = 0;
+    minutes = 0;
+    seconds = 0;
+    document.getElementById("showCd").innerHTML = "00:00:00";
+    document.getElementById("showSubject").innerHTML = tempData[inx].name;
+    document.getElementById("showLink").innerHTML = `<a
+    target="_blank"
+    href="${tempData[inx].link}"
+    >${tempData[inx].link}</a
+  >`;
+    return;
+  } else {
+    hours = Math.floor(time / 3600);
+    minutes = Math.floor((time - hours * 60 * 60) / 60);
+    seconds = time % 60;
+  }
   // console.log("time");
   // console.log(time);
   // console.log(hours);
@@ -242,8 +332,18 @@ function setRecomendedLink() {
   href="${tempData[inx].link}"
   >${tempData[inx].link}</a
 >`;
+  setTable();
+}
+async function deleteItem(docId) {
+  console.log("deleteItem");
+  // console.log(docId);
+  const docRef = doc(db, `test/${docId}`);
+
+  await deleteDoc(docRef);
+  setTable();
 }
 
 window.addNewContent = addNewContent;
 window.showData = showData;
 window.deleteData = deleteData;
+window.deleteItem = deleteItem;
